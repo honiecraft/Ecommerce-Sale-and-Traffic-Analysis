@@ -1,7 +1,21 @@
-# Explore Ecommerce Dataset
+# Explore Ecommerce Dataset [SQL in BigQuery]
 
-### Q1: Calculate total visit, pageview, transaction for Jan, Feb and March 2017 (order by month) 
-#### Query
+## About
+This project aims to explore the data for **Google Merchandise Store**, an *E-commerce* that sells Google-branded merchandise. The data is sourced from **Google Analytics** and loaded into a table in **BigQuery** to create a database for easy management and analysis.
+
+## Pre-requisite
+You need access to a **Google Cloud** project with **BigQuery API** enabled. Complete the *Before you begin* section in the [BigQuery Quickstart guide](https://cloud.google.com/bigquery/docs/quickstarts/query-public-dataset-console#before-you-begin) to create a new Google Cloud project or to enable the BigQuery API in an existing one.
+
+## Using the dataset
+- In the navigation panel, select **Add Data** and then **Search a project**.
+- Enter the project ID `bigquery-public-data.google_analytics_sample.ga_sessions` and click **Enter**.
+- Click on the `ga_sessions_` table to open it.
+
+## Explore data
+Below are 8 queries to explore and gain knowledge of *sales* and *traffic* of the E-commerce company.
+
+### :black_nib:Q1: Calculate total visit, pageview, transaction for Jan, Feb and March 2017 (order by month) 
+#### Query   
 
 ```sql
 SELECT 
@@ -17,7 +31,7 @@ ORDER BY month;
 #### Result
 ![image](https://github.com/user-attachments/assets/0029b426-8374-4900-8957-88b6d2cd207a)
 
-### Q2: Bounce rate per traffic source in July 2017 (Bounce_rate = num_bounce/total_visit) (order by total_visit DESC)
+### :black_nib:Q2: Bounce rate per traffic source in July 2017 (Bounce_rate = num_bounce/total_visit) (order by total_visit DESC)
 #### Query
 ```sql
 SELECT 
@@ -32,7 +46,7 @@ ORDER BY total_visits DESC;
 #### Result
 ![image](https://github.com/user-attachments/assets/eb710749-0184-4468-af22-973ab7f4947f)
 
-### Q3: Revenue by traffic source by week, by month in June 2017
+### :black_nib:Q3: Revenue by traffic source by week, by month in June 2017
 #### Query
 ```sql
 SELECT
@@ -63,7 +77,7 @@ ORDER BY revenue DESC;
 #### Result
 ![image](https://github.com/user-attachments/assets/add4599a-91dd-41ce-a6ba-01bc2c0ec6ae)
 
-### Q4: Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017.
+### :black_nib:Q4: Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017.
 #### Query
 ```sql
 WITH formatted_tbl_cte AS (
@@ -101,7 +115,7 @@ ORDER BY month;
 #### Result
 ![image](https://github.com/user-attachments/assets/913cd7f6-26ea-41f1-a7d3-1dcd28c7509f)
 
-### Q5: Average number of transactions per user that made a purchase in July 2017
+### :black_nib:Q5: Average number of transactions per user that made a purchase in July 2017
 #### Query
 ```sql
 SELECT 
@@ -117,7 +131,7 @@ GROUP BY month;
 #### Result
 ![image](https://github.com/user-attachments/assets/347f9bca-7560-4064-9a5c-21253eb51e4b)
 
-### Q6: Average amount of money spent per session. Only include purchaser data in July 2017
+### :black_nib:Q6: Average amount of money spent per session. Only include purchaser data in July 2017
 #### Query
 ```sql
 SELECT
@@ -133,7 +147,7 @@ GROUP BY month;
 #### Result
 ![image](https://github.com/user-attachments/assets/0c9110ca-42e2-4ead-9ab9-e4c3b9cddbc8)
 
-### Q7: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017. Output should show product name and the quantity 
+### :black_nib:Q7: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017. Output should show product name and the quantity 
 #### Query
 ```sql
 WITH distinct_user AS (
@@ -161,7 +175,7 @@ ORDER BY quantity DESC;
 #### Result
 ![image](https://github.com/user-attachments/assets/2373d46e-6757-4557-87d7-58b815202cf6)
 
-### Q8: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. For example, 100% product view then 40% add_to_cart and 10% 
+### :black_nib:Q8: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. For example, 100% product view then 40% add_to_cart and 10% 
 #### Query
 ```sql
 WITH cal_num_prod_cte AS(
