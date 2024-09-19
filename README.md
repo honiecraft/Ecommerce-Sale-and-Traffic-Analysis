@@ -8,7 +8,7 @@ You need access to a **Google Cloud** project with **BigQuery API** enabled. Com
 
 ## Using the dataset
 The data is sourced from **Google Analytics** and loaded into a table in **BigQuery** to create a database for easy management and analysis. To use the dataset, follow the below steps:
-- In the navigation panel, select **Add Data** and then **Search a project**.
+- In the navigation panel of Bigquery, select **Add Data** and then **Search a project**.
 - Enter the project ID `bigquery-public-data.google_analytics_sample.ga_sessions` and click **Enter**.
 - Click on the `ga_sessions_` table to open it.
 - Click [here](https://support.google.com/analytics/answer/3437719?hl=en) to view **Table Schema**.
