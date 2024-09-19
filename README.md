@@ -1,12 +1,13 @@
 # Explore Ecommerce Dataset [SQL in BigQuery]
 
 ## About
-This project aims to explore the data for **Google Merchandise Store**, an *E-commerce* that sells Google-branded merchandise. The data is sourced from **Google Analytics** and loaded into a table in **BigQuery** to create a database for easy management and analysis.
+This project aims to explore key patterns of **Google Merchandise Store**, an *E-commerce* that sells Google-branded merchandise. Utilizing **window functions, time formatting syntax, and multiple CTEs** to clean and extract data to address the business hypotheses.
 
 ## Pre-requisite
 You need access to a **Google Cloud** project with **BigQuery API** enabled. Complete the *Before you begin* section in the [BigQuery Quickstart guide](https://cloud.google.com/bigquery/docs/quickstarts/query-public-dataset-console#before-you-begin) to create a new Google Cloud project or to enable the BigQuery API in an existing one.
 
 ## Using the dataset
+The data is sourced from **Google Analytics** and loaded into a table in **BigQuery** to create a database for easy management and analysis. To use the dataset, follow the below steps:
 - In the navigation panel, select **Add Data** and then **Search a project**.
 - Enter the project ID `bigquery-public-data.google_analytics_sample.ga_sessions` and click **Enter**.
 - Click on the `ga_sessions_` table to open it.
