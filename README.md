@@ -16,8 +16,10 @@ The data is sourced from **Google Analytics** and loaded into a table in **BigQu
 ## Explore data
 Learn how to write query and explore *sales* and *traffic* metrics of the E-commerce company.
 
-### :black_nib: 1. Web traffic metrics by specific time 
-Calculate **total visit, pageview, transaction** for Jan, Feb and March 2017 (order by month).
+### 1. Web traffic metrics by specific time
+Together with **total pageviews** and **transactions**, **total visits** data gives an overview of a website's reach and helps businesses **track traffic growth and online visibility**. This information helps them determine the total number of interactions with a website.
+
+:black_nib: Calculate **total visit, pageview, transaction** for Jan, Feb and March 2017 (order by month).
 <details>
 <summary>Click to expand query!</summary>
 
@@ -39,10 +41,16 @@ ORDER BY month;
 
 #### Result
 ![image](https://github.com/user-attachments/assets/0029b426-8374-4900-8957-88b6d2cd207a)
+
+From January to March 2017, there was a **slight decrease in total visits and pageviews in February**, but total transactions still increased. These figures were generally rising in **March**, with a **notable 35% increase in total transactions**.
 </details>
 
-### :black_nib: 2. Bounce rate metric
-Bounce rate per traffic source in July 2017, order by total_visit descending order.
+___
+
+### 2. Bounce rate metric
+The **Bounce rate** metric shows the ratio of visits that contained exactly one hit compared to the number of visits entering on that page. 
+
+:black_nib: Bounce rate per traffic source in July 2017, order by total_visit descending order.
 <details>
 <summary>Click to expand query!</summary>
   
@@ -63,10 +71,16 @@ ORDER BY total_visits DESC;
   
 #### Result
 ![image](https://github.com/user-attachments/assets/eb710749-0184-4468-af22-973ab7f4947f)
+
+Although the bounce rate can **vary greatly** and be influenced by a wide range of factors, in general, **high visitation sources tend to have high bounce rates**.
 </details>
 
-### :black_nib: 3. Revenue by traffic source
-Revenue by traffic source by week, by month in June 2017
+___
+
+### 3. Revenue by traffic source
+Revenue by Traffic Source is a **breakdown of total revenue by traffic source**. This metric **highlights the most valuable sources** that direct traffic to the company's E-commerce site.
+
+:black_nib: Revenue by traffic source by week, by month in June 2017.
 <details>
 <summary>Click to expand query!</summary>
 
@@ -103,10 +117,16 @@ ORDER BY revenue DESC;
 
 #### Result
 ![image](https://github.com/user-attachments/assets/add4599a-91dd-41ce-a6ba-01bc2c0ec6ae)
+
+**Direct** is the source that brings in the **largest revenue** compared to the other sources.
 </details>
 
-### :black_nib: 4. Average pageviews by purchaser type
-Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017.
+___
+
+### 4. Average pageviews by purchaser type
+Look at the behavior of **purchasers** and n**on-purchasers** to see **how many pageviews they spend on average** before making a purchase decision.
+
+:black_nib: Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017.
 <details>
 <summary>Click to expand query!</summary>
 
@@ -150,10 +170,16 @@ ORDER BY month;
 
 #### Result
 ![image](https://github.com/user-attachments/assets/913cd7f6-26ea-41f1-a7d3-1dcd28c7509f)
+
+Average pageviews for **non-purchases** are **higher** than those for **purchases**: more than x3 in June and more than x2.5 in July.
 </details>
 
-### :black_nib: 5. Average transactions per user
-Average number of transactions per user that made a purchase in July 2017
+___
+
+### 5. Average transactions per user
+Transactions per User is a metric that measures the **average number of transactions made by each individual user on a website**.
+
+:black_nib: Average number of transactions per user that made a purchase in July 2017.
 <details>
 <summary>Click to expand query!</summary>
 
@@ -175,10 +201,16 @@ GROUP BY month;
   
 #### Result
 ![image](https://github.com/user-attachments/assets/347f9bca-7560-4064-9a5c-21253eb51e4b)
+
+The average number of transactions per user who made a purchase in July was **approximately 4**, which was a good figure.
 </details>
 
-### :black_nib: 6. Average money spent per session
-Average amount of money spent per session. Only include purchaser data in July 2017
+___
+
+### 6. Average money spent per session
+Measure the amount of **revenue generated per user session** on a website.
+
+:black_nib: Average amount of money spent per session. Only include purchaser data in July 2017.
 <details>
 <summary>Click to expand query!</summary>
 
@@ -202,8 +234,12 @@ GROUP BY month;
 ![image](https://github.com/user-attachments/assets/0c9110ca-42e2-4ead-9ab9-e4c3b9cddbc8)
 </details>
 
-### :black_nib: 7. Products purchased by specific customers
-Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017. Output should show product name and the quantity 
+___
+
+### 7. Products purchased by specific customers
+**Segmenting customers** based on their **purchase history** is a powerful way for businesses to improve their marketing and customer retention strategies.
+
+:black_nib: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017. Output should show product name and the quantity.
 <details>
 <summary>Click to expand query!</summary>
 
@@ -237,11 +273,17 @@ ORDER BY quantity DESC;
 
   #### Result
 ![image](https://github.com/user-attachments/assets/2373d46e-6757-4557-87d7-58b815202cf6)
+
+It can be seen that these customers have a great interest in **fashion** items as most of the products they buy are related to clothing.
 </details>
 
-### :black_nib: 8. Cohort map from product view to addtocart to purchase
-Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. \
-For example, 100% product view then 40% add_to_cart and 10%
+___
+
+### 8. Cohort map from product view to addtocart to purchase
+**Cohort analysis** groups people with **similar experiences** but at **different times** so that their behavior at similar stages of their life cycles can **be compared**.
+
+:black_nib: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. \
+For example, 100% product view then 40% add_to_cart and 10%.
 <details>
 <summary>Click to expand query!</summary>
 
@@ -274,7 +316,6 @@ FROM cal_num_prod_cte;
   
 #### Result
 ![image](https://github.com/user-attachments/assets/399fa523-3531-4050-9f4e-38fdfb2d89ed)
+
+January to March 2017 shows **positive signs** as add_to_cart_rate and purchase_rate **both increase gradually**.
 </details>
-
-## Conclusion
-
