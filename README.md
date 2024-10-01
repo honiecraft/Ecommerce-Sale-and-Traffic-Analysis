@@ -1,4 +1,4 @@
-# Explore Ecommerce Dataset [SQL in BigQuery]
+# Ecommerce Sale and Traffic Analysis [SQL in BigQuery]
 
 ## About
 This project aims to explore key patterns of **Google Merchandise Store**, an *E-commerce* that sells Google-branded merchandise. Utilizing **window functions, time formatting syntax, and multiple CTEs** to clean and extract data to address the business hypotheses.
@@ -14,11 +14,14 @@ The data is sourced from **Google Analytics** and loaded into a table in **BigQu
 - Click [here](https://support.google.com/analytics/answer/3437719?hl=en) to view **Table Schema**.
 
 ## Explore data
-Below are 8 queries to explore and gain knowledge of *sales* and *traffic* of the E-commerce company.
+Learn how to write query and explore *sales* and *traffic* metrics of the E-commerce company.
 
-### :black_nib:Q1: Calculate total visit, pageview, transaction for Jan, Feb and March 2017 (order by month) 
-#### Query   
+### :black_nib: 1. Web traffic metrics by specific time 
+Calculate **total visit, pageview, transaction** for Jan, Feb and March 2017 (order by month).
+<details>
+<summary>Click to expand query!</summary>
 
+#### Query
 ```sql
 SELECT 
   FORMAT_DATE("%Y%m",PARSE_DATE('%Y%m%d',date)) AS month,
@@ -30,10 +33,19 @@ WHERE _table_suffix BETWEEN '0101' and '0331'
 GROUP BY month
 ORDER BY month;
 ```
+</details>
+<details>
+<summary>Click to expand result!</summary>
+
 #### Result
 ![image](https://github.com/user-attachments/assets/0029b426-8374-4900-8957-88b6d2cd207a)
+</details>
 
-### :black_nib:Q2: Bounce rate per traffic source in July 2017 (Bounce_rate = num_bounce/total_visit) (order by total_visit DESC)
+### :black_nib: 2. Bounce rate metric
+Bounce rate per traffic source in July 2017, order by total_visit descending order.
+<details>
+<summary>Click to expand query!</summary>
+  
 #### Query
 ```sql
 SELECT 
@@ -45,10 +57,19 @@ FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
 GROUP BY trafficSource.source
 ORDER BY total_visits DESC;
 ```
+</details>
+<details>
+<summary>Click to expand result!</summary>
+  
 #### Result
 ![image](https://github.com/user-attachments/assets/eb710749-0184-4468-af22-973ab7f4947f)
+</details>
 
-### :black_nib:Q3: Revenue by traffic source by week, by month in June 2017
+### :black_nib: 3. Revenue by traffic source
+Revenue by traffic source by week, by month in June 2017
+<details>
+<summary>Click to expand query!</summary>
+
 #### Query
 ```sql
 SELECT
@@ -76,10 +97,19 @@ WHERE product.productRevenue IS NOT NULL
 GROUP BY 2, 3
 ORDER BY revenue DESC;
 ```
+</details>
+<details>
+<summary>Click to expand result!</summary>
+
 #### Result
 ![image](https://github.com/user-attachments/assets/add4599a-91dd-41ce-a6ba-01bc2c0ec6ae)
+</details>
 
-### :black_nib:Q4: Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017.
+### :black_nib: 4. Average pageviews by purchaser type
+Average number of pageviews by purchaser type (purchasers vs non-purchasers) in June, July 2017.
+<details>
+<summary>Click to expand query!</summary>
+
 #### Query
 ```sql
 WITH formatted_tbl_cte AS (
@@ -114,10 +144,19 @@ FROM cal_avg_cte
 GROUP BY month
 ORDER BY month;
 ```
+</details>
+<details>
+<summary>Click to expand result!</summary>
+
 #### Result
 ![image](https://github.com/user-attachments/assets/913cd7f6-26ea-41f1-a7d3-1dcd28c7509f)
+</details>
 
-### :black_nib:Q5: Average number of transactions per user that made a purchase in July 2017
+### :black_nib: 5. Average transactions per user
+Average number of transactions per user that made a purchase in July 2017
+<details>
+<summary>Click to expand query!</summary>
+
 #### Query
 ```sql
 SELECT 
@@ -130,10 +169,19 @@ WHERE totals.transactions >= 1
   AND product.productRevenue IS NOT NULL
 GROUP BY month;
 ```
+</details>
+<details>
+<summary>Click to expand result!</summary>
+  
 #### Result
 ![image](https://github.com/user-attachments/assets/347f9bca-7560-4064-9a5c-21253eb51e4b)
+</details>
 
-### :black_nib:Q6: Average amount of money spent per session. Only include purchaser data in July 2017
+### :black_nib: 6. Average money spent per session
+Average amount of money spent per session. Only include purchaser data in July 2017
+<details>
+<summary>Click to expand query!</summary>
+
 #### Query
 ```sql
 SELECT
@@ -146,10 +194,19 @@ WHERE totals.transactions IS NOT NULL
   AND product.productRevenue IS NOT NULL
 GROUP BY month;
 ```
+</details>
+<details>
+<summary>Click to expand result!</summary>
+
 #### Result
 ![image](https://github.com/user-attachments/assets/0c9110ca-42e2-4ead-9ab9-e4c3b9cddbc8)
+</details>
 
-### :black_nib:Q7: Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017. Output should show product name and the quantity 
+### :black_nib: 7. Products purchased by specific customers
+Other products purchased by customers who purchased product "YouTube Men's Vintage Henley" in July 2017. Output should show product name and the quantity 
+<details>
+<summary>Click to expand query!</summary>
+
 #### Query
 ```sql
 WITH distinct_user AS (
@@ -174,10 +231,20 @@ WHERE product.v2ProductName <> "YouTube Men's Vintage Henley"
 GROUP BY product.v2ProductName
 ORDER BY quantity DESC;
 ```
-#### Result
-![image](https://github.com/user-attachments/assets/2373d46e-6757-4557-87d7-58b815202cf6)
+</details>
+<details>
+<summary>Click to expand result!</summary>
 
-### :black_nib:Q8: Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. For example, 100% product view then 40% add_to_cart and 10% 
+  #### Result
+![image](https://github.com/user-attachments/assets/2373d46e-6757-4557-87d7-58b815202cf6)
+</details>
+
+### :black_nib: 8. Cohort map from product view to addtocart to purchase
+Calculate cohort map from product view to addtocart to purchase in Jan, Feb and March 2017. \
+For example, 100% product view then 40% add_to_cart and 10%
+<details>
+<summary>Click to expand query!</summary>
+
 #### Query
 ```sql
 WITH cal_num_prod_cte AS(
@@ -201,6 +268,13 @@ SELECT
   ROUND(100*num_purchase/num_product_view,2) AS purchase_rate
 FROM cal_num_prod_cte;
 ```
+</details>
+<details>
+<summary>Click to expand result!</summary>
+  
 #### Result
 ![image](https://github.com/user-attachments/assets/399fa523-3531-4050-9f4e-38fdfb2d89ed)
+</details>
+
+## Conclusion
 
